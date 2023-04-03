@@ -1,0 +1,490 @@
+//
+//  ContentView.swift
+//  ISPP SCHOOL GUIDE
+//
+//  Created by 徐定立 on 1/4/23.
+//
+
+import SwiftUI
+
+struct AboutPage: View {
+    var body: some View {
+        VStack {
+            Text("GC member: DingliXu, Lucas, Rich")
+                .bold()
+            Text("App designer: DingliXu")
+                .bold()
+            Text("UI designer: DingliXu")
+                .bold()
+            Text("UX designer: DingliXu")
+                .bold()
+            Text("photographer: Lucas")
+                .bold()
+        }
+    }
+}
+
+struct SportsFieldPage: View {
+    let imageNames = ["IMG_1284"]
+    @State private var currentPage = 0
+    
+    var body: some View {
+        VStack {
+            GeometryReader { geometry in
+                TabView(selection: $currentPage) {
+                    ForEach(0..<imageNames.count) { index in
+                        Image(imageNames[index])
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(20)
+                            .padding()
+                            .scaleEffect(currentPage == index ? 1 : 0.8)
+                            .transition(.scale)
+                            .gesture(
+                                DragGesture(minimumDistance: 50)
+                                    .onChanged { value in
+                                        withAnimation {
+                                            currentPage = index + Int(-value.translation.width / 50)
+                                            currentPage = min(max(currentPage, 0), imageNames.count - 1)
+                                        }
+                                    }
+                                    .onEnded { _ in
+                                        withAnimation {
+                                            currentPage = index
+                                        }
+                                    }
+                            )
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.75, alignment: .center)
+            }
+            
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundColor(.white)
+                .shadow(radius: 4)
+                .overlay(
+                    Text("ISPP’s fields are amongst the best in Cambodia, laid with imported turf which is immaculately maintained by our team of gardeners. The total space equates to an official league-sized football field, which can be divided into three medium-sized fields. The fields are always busy with PE classes, school sports, football tournaments, recreational rugby, frisbee and many other activities. External hiring is available and it is regularly used for AFL, baseball, cricket and many other sports. Lighting towers mean that we can host sports into the evening, maximising the cooler hours in the hotter months. The field is overlooked by the Pavilion building, with changing rooms, a viewing platform and barbecue facilities.")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                )
+                .frame(width: 400, height: 200)
+                .padding(.bottom, 20)
+            
+            HStack(spacing: 10) {
+                ForEach(0..<imageNames.count, id: \.self) { index in
+                    Circle()
+                        .foregroundColor(currentPage == index ? .white : .gray)
+                        .frame(width: 8, height: 8)
+                        .scaleEffect(currentPage == index ? 1.2 : 1)
+                        .transition(.scale)
+                }
+            }
+        }
+        .navigationBarTitle("Sports Field")
+    }
+}
+
+struct ButterflyGardenPage: View {
+    let imageNames = ["IMG_1290","IMG_1291","IMG_1292","IMG_1293"]
+    @State private var currentPage = 0
+    
+    var body: some View {
+        VStack {
+            GeometryReader { geometry in
+                TabView(selection: $currentPage) {
+                    ForEach(0..<imageNames.count) { index in
+                        Image(imageNames[index])
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(20)
+                            .padding()
+                            .scaleEffect(currentPage == index ? 1 : 0.8)
+                            .transition(.scale)
+                            .gesture(
+                                DragGesture(minimumDistance: 50)
+                                    .onChanged { value in
+                                        withAnimation {
+                                            currentPage = index + Int(-value.translation.width / 50)
+                                            currentPage = min(max(currentPage, 0), imageNames.count - 1)
+                                        }
+                                    }
+                                    .onEnded { _ in
+                                        withAnimation {
+                                            currentPage = index
+                                        }
+                                    }
+                            )
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.75, alignment: .center)
+            }
+            
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundColor(.white)
+                .shadow(radius: 4)
+                .overlay(
+                    Text("Students can watch, learn and reflect in our popular butterfly garden, which is open for learning and during breaks. Children can observe the lifecycle of a range of species, from before they hatch to adulthood, as they flit amongst their favourite plants and flowers.")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                )
+                .frame(width: 400, height: 200)
+                .padding(.bottom, 20)
+            
+            HStack(spacing: 10) {
+                ForEach(0..<imageNames.count, id: \.self) { index in
+                    Circle()
+                        .foregroundColor(currentPage == index ? .white : .gray)
+                        .frame(width: 8, height: 8)
+                        .scaleEffect(currentPage == index ? 1.2 : 1)
+                        .transition(.scale)
+                }
+            }
+        }
+        .navigationBarTitle("ButterflyGarden")
+    }
+}
+
+struct SwimmingPoolPage: View {
+    let imageNames = ["IMG_1290","IMG_1291","IMG_1292","IMG_1293"]
+    @State private var currentPage = 0
+    
+    var body: some View {
+        VStack {
+            GeometryReader { geometry in
+                TabView(selection: $currentPage) {
+                    ForEach(0..<imageNames.count) { index in
+                        Image(imageNames[index])
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(20)
+                            .padding()
+                            .scaleEffect(currentPage == index ? 1 : 0.8)
+                            .transition(.scale)
+                            .gesture(
+                                DragGesture(minimumDistance: 50)
+                                    .onChanged { value in
+                                        withAnimation {
+                                            currentPage = index + Int(-value.translation.width / 50)
+                                            currentPage = min(max(currentPage, 0), imageNames.count - 1)
+                                        }
+                                    }
+                                    .onEnded { _ in
+                                        withAnimation {
+                                            currentPage = index
+                                        }
+                                    }
+                            )
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.75, alignment: .center)
+            }
+            
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundColor(.white)
+                .shadow(radius: 4)
+                .overlay(
+                    Text("ISPP has one of only a handful of Olympic-sized swimming pools in Cambodia. It is used daily for our student swimming programme and after-school swim squad and activities. Our smallest students begin to learn in the nearby beginners’ pool, and we host regular local and international swim meets. The swimming pool is open to the ISPP community after hours and on Saturdays.")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                )
+                .frame(width: 400, height: 200)
+                .padding(.bottom, 20)
+            
+            HStack(spacing: 10) {
+                ForEach(0..<imageNames.count, id: \.self) { index in
+                    Circle()
+                        .foregroundColor(currentPage == index ? .white : .gray)
+                        .frame(width: 8, height: 8)
+                        .scaleEffect(currentPage == index ? 1.2 : 1)
+                        .transition(.scale)
+                }
+            }
+        }
+        .navigationBarTitle("Swimming Pool")
+    }
+}
+
+struct GymnasiumPage: View {
+    let imageNames = ["IMG_1290","IMG_1291","IMG_1292","IMG_1293"]
+    @State private var currentPage = 0
+    
+    var body: some View {
+        VStack {
+            GeometryReader { geometry in
+                TabView(selection: $currentPage) {
+                    ForEach(0..<imageNames.count) { index in
+                        Image(imageNames[index])
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(20)
+                            .padding()
+                            .scaleEffect(currentPage == index ? 1 : 0.8)
+                            .transition(.scale)
+                            .gesture(
+                                DragGesture(minimumDistance: 50)
+                                    .onChanged { value in
+                                        withAnimation {
+                                            currentPage = index + Int(-value.translation.width / 50)
+                                            currentPage = min(max(currentPage, 0), imageNames.count - 1)
+                                        }
+                                    }
+                                    .onEnded { _ in
+                                        withAnimation {
+                                            currentPage = index
+                                        }
+                                    }
+                            )
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.75, alignment: .center)
+            }
+            
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundColor(.white)
+                .shadow(radius: 4)
+                .overlay(
+                    Text("Our gym features two separate spaces housing three full-sized courts, marked out for basketball, volleyball, netball and badminton and used for a range of PE and recreational activities. It is fully air-conditioned and is a popular venue on the local and regional school sports circuit. It also has a rock climbing wall for our Elementary students’ PE and break time play.")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                )
+                .frame(width: 400, height: 200)
+                .padding(.bottom, 20)
+            
+            HStack(spacing: 10) {
+                ForEach(0..<imageNames.count, id: \.self) { index in
+                    Circle()
+                        .foregroundColor(currentPage == index ? .white : .gray)
+                        .frame(width: 8, height: 8)
+                        .scaleEffect(currentPage == index ? 1.2 : 1)
+                        .transition(.scale)
+                }
+            }
+        }
+        .navigationBarTitle("GYM")
+    }
+}
+
+struct Cafeteriapage: View {
+    let imageNames = ["IMG_1300","IMG_1304"]
+    @State private var currentPage = 0
+    
+    var body: some View {
+        VStack {
+            GeometryReader { geometry in
+                TabView(selection: $currentPage) {
+                    ForEach(0..<imageNames.count) { index in
+                        Image(imageNames[index])
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(20)
+                            .padding()
+                            .scaleEffect(currentPage == index ? 1 : 0.8)
+                            .transition(.scale)
+                            .gesture(
+                                DragGesture(minimumDistance: 50)
+                                    .onChanged { value in
+                                        withAnimation {
+                                            currentPage = index + Int(-value.translation.width / 50)
+                                            currentPage = min(max(currentPage, 0), imageNames.count - 1)
+                                        }
+                                    }
+                                    .onEnded { _ in
+                                        withAnimation {
+                                            currentPage = index
+                                        }
+                                    }
+                            )
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.75, alignment: .center)
+            }
+            
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundColor(.white)
+                .shadow(radius: 4)
+                .overlay(
+                    Text("Our main cafeteria serves more than 600 buffet meals to students from Grades 1-12 each day. They have a wide range of meal choices, including Asian, western, vegetarian and halal options, a daily soup and a salad bar.Our Early Years and Kindergarten students have their own separate cafeteria where their teachers and teaching assistants supervise their healthy lunches, either from our lunch programme or from home.")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                )
+                .frame(width: 400, height: 200)
+                .padding(.bottom, 20)
+            
+            HStack(spacing: 10) {
+                ForEach(0..<imageNames.count, id: \.self) { index in
+                    Circle()
+                        .foregroundColor(currentPage == index ? .white : .gray)
+                        .frame(width: 8, height: 8)
+                        .scaleEffect(currentPage == index ? 1.2 : 1)
+                        .transition(.scale)
+                }
+            }
+        }
+        .navigationBarTitle("Cafeteria")
+    }
+}
+
+struct LearningCentrePage: View {
+    let imageNames = ["IMG_1290","IMG_1291","IMG_1292","IMG_1293"]
+    @State private var currentPage = 0
+    
+    var body: some View {
+        VStack {
+            GeometryReader { geometry in
+                TabView(selection: $currentPage) {
+                    ForEach(0..<imageNames.count) { index in
+                        Image(imageNames[index])
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(20)
+                            .padding()
+                            .scaleEffect(currentPage == index ? 1 : 0.8)
+                            .transition(.scale)
+                            .gesture(
+                                DragGesture(minimumDistance: 50)
+                                    .onChanged { value in
+                                        withAnimation {
+                                            currentPage = index + Int(-value.translation.width / 50)
+                                            currentPage = min(max(currentPage, 0), imageNames.count - 1)
+                                        }
+                                    }
+                                    .onEnded { _ in
+                                        withAnimation {
+                                            currentPage = index
+                                        }
+                                    }
+                            )
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.75, alignment: .center)
+            }
+            
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundColor(.white)
+                .shadow(radius: 4)
+                .overlay(
+                    Text("At the heart of our campus is the Learning Centre, which houses the Elementary and Secondary libraries, computer lab, design studio and other resources. Students enjoy reading from a choice of thousands of books in a variety of languages as well as quiet activities and study. Parents are welcome to borrow books too! Underneath the Learning Centre, surrounded by the reflection pond, students can eat snacks, play or study and parents gather after school and at events to catch the breeze in this community space.")
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                )
+                .frame(width: 400, height: 200)
+                .padding(.bottom, 20)
+            
+            HStack(spacing: 10) {
+                ForEach(0..<imageNames.count, id: \.self) { index in
+                    Circle()
+                        .foregroundColor(currentPage == index ? .white : .gray)
+                        .frame(width: 8, height: 8)
+                        .scaleEffect(currentPage == index ? 1.2 : 1)
+                        .transition(.scale)
+                }
+            }
+        }
+        .navigationBarTitle("LearningCentre")
+    }
+}
+
+struct ContentView: View {
+    let imageNames = ["1672728939165","IMG_1290"]
+    @State private var currentPage = 0
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                GeometryReader { geometry in
+                    TabView(selection: $currentPage) {
+                        ForEach(0..<imageNames.count, id: \.self) { index in
+                            Image(imageNames[index])
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(20)
+                                .padding()
+                                .scaleEffect(currentPage == index ? 1 : 0.8)
+                                .gesture(
+                                    DragGesture(minimumDistance: 50)
+                                        .onChanged { value in
+                                            withAnimation {
+                                                currentPage = index + Int(-value.translation.width / 50)
+                                                currentPage = min(max(currentPage, 0), imageNames.count - 1)
+                                            }
+                                        }
+                                        .onEnded { _ in
+                                            withAnimation {
+                                                currentPage = index
+                                            }
+                                        }
+                                )
+                        }
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                }
+                
+                Spacer()
+                
+                NavigationLink(destination: AboutPage()) {
+                    Text("About")
+                        .font(.headline)
+                        .padding()
+                }
+                
+                NavigationLink(destination: SportsFieldPage()) {
+                    Text("Sports Field")
+                        .font(.headline)
+                        .padding()
+                }
+                
+                NavigationLink(destination: ButterflyGardenPage()) {
+                    Text("Butterfly Garden")
+                        .font(.headline)
+                        .padding()
+                }
+
+                NavigationLink(destination: SwimmingPoolPage()) {
+                    Text("Swimming Pool")
+                        .font(.headline)
+                        .padding()
+                }
+                
+                NavigationLink(destination: GymnasiumPage()) {
+                    Text("GYM")
+                        .font(.headline)
+                        .padding()
+                }
+                
+                NavigationLink(destination: Cafeteriapage()) {
+                    Text("Cafeteria")
+                        .font(.headline)
+                        .padding()
+                }
+                
+                NavigationLink(destination: LearningCentrePage()) {
+                    Text("Leanring Centre")
+                        .font(.headline)
+                        .padding()
+                }
+                
+                Spacer()
+            }
+            .navigationBarTitle("ISPP School Guide")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
